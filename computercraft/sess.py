@@ -14,10 +14,11 @@ from traceback import format_exc
 from types import ModuleType
 
 from greenlet import greenlet, getcurrent as get_current_greenlet
+from RestrictedPython import compile_restricted as compile
 
+from .safe_builtins import cc_builtins
 from .lua import lua_string
 from . import rproc, ser
-
 
 __all__ = (
     'CCSession',
@@ -71,9 +72,8 @@ class StdFileProxy:
             return self._native.readline(size)
         else:
             if size is not None and size >= 0:
-                raise RuntimeError(
-                    "Computercraft environment doesn't support "
-                    "stdin readline method with parameter")
+                raise RuntimeError("Computercraft environment doesn't support "
+                                   "stdin readline method with parameter")
             return eval_lua('return io.read()').take_string() + '\n'
 
     def write(self, s):
@@ -139,11 +139,8 @@ sys.stderr = StdFileProxy(sys.__stderr__, True)
 def eval_lua(lua_code, *params, immediate=False):
     if isinstance(lua_code, str):
         lua_code = ser.encode(lua_code)
-    request = (
-        (b'I' if immediate else b'T')
-        + ser.serialize(lua_code)
-        + ser.serialize(params)
-    )
+    request = ((b'I' if immediate else b'T') + ser.serialize(lua_code) +
+               ser.serialize(params))
     result = get_current_session()._server_greenlet.switch(request)
     rp = rproc.ResultProc(ser.deserialize(result))
     if not immediate:
@@ -152,7 +149,9 @@ def eval_lua(lua_code, *params, immediate=False):
 
 
 @contextmanager
-def lua_context_object(create_expr: str, create_params: tuple, finalizer_template: str = ''):
+def lua_context_object(create_expr: str,
+                       create_params: tuple,
+                       finalizer_template: str = ''):
     sess = get_current_session()
     fid = sess.create_task_id()
     var = 'temp[{}]'.format(lua_string(fid))
@@ -169,6 +168,7 @@ def eval_lua_method_factory(obj):
     def method(name, *params):
         code = 'return ' + obj + name + '(...)'
         return eval_lua(code, *params)
+
     return method
 
 
@@ -232,7 +232,8 @@ class CCGreenlet:
             x = self
             while x._g.dead:
                 x = x._parent
-            self._sess._sender(task[0:1] + ser.serialize(x._task_id) + task[1:])
+            self._sess._sender(task[0:1] + ser.serialize(x._task_id) +
+                               task[1:])
 
         if self._g.dead:
             if self._parent is None:
@@ -338,7 +339,8 @@ class CCSession:
 
     def run_program(self, program, args):
         def _run_program():
-            rp = eval_lua('''
+            rp = eval_lua(
+                '''
 local p = fs.combine(shell.dir(), ...)
 if not fs.exists(p) then return nil end
 if fs.isDir(p) then return nil end
@@ -353,14 +355,17 @@ return p, code
             p = rp.take_string()
             code = rp.take_string()
             cc = compile(code, p, 'exec')
-            exec(cc, {'__file__': p, 'args': args})
+            exec(cc, {
+                '__file__': p,
+                'args': args,
+                "__builtins__": cc_builtins
+            })
 
         self._run_sandboxed_greenlet(_run_program)
 
     def run_repl(self):
         def _repl():
-            InteractiveConsole(locals={}).interact(
-                banner='Python {}'.format(python_version()),
-            )
+            InteractiveConsole(locals={}).interact(banner='Python {}'.format(
+                python_version()), )
 
         self._run_sandboxed_greenlet(_repl)

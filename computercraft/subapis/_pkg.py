@@ -3,7 +3,7 @@ from RestrictedPython import compile_restricted as compile
 from ..errors import LuaException
 from ..lua import lua_string
 from ..sess import eval_lua
-from .safe import cc_builtins
+from ..safe_builtins import cc_builtins
 
 
 __all__ = (
