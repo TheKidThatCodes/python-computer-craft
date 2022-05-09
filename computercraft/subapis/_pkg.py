@@ -1,8 +1,9 @@
 from types import ModuleType
-
+from RestrictedPython import compile_restricted as compile
 from ..errors import LuaException
 from ..lua import lua_string
 from ..sess import eval_lua
+from .safe import cc_builtins
 
 
 __all__ = (
@@ -39,7 +40,8 @@ return src
     if source is None:
         raise ImportError('File not found: {}'.format(path))
     cc = compile(source, mod.__name__, 'exec')
-    exec(cc, vars(mod))
+    
+    exec(cc, {"builtins":})
     return mod
 
 

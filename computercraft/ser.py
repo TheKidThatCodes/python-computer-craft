@@ -2,16 +2,15 @@ from typing import Any, Tuple
 
 from . import lua
 
-
 __all__ = (
     'serialize',
     'deserialize',
 )
 
-
 _ENC = 'latin1'
 # encoding fast check
-assert [bytes([i]) for i in range(256)] == [chr(i).encode(_ENC) for i in range(256)]
+assert [bytes([i])
+        for i in range(256)] == [chr(i).encode(_ENC) for i in range(256)]
 
 
 def encode(s: str) -> bytes:

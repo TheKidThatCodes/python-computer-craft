@@ -97,7 +97,7 @@ class CCApplication(web.Application):
             # fix for malformed Host header
             h += ':{}'.format(request.app['port'])
         fcont = fcont.replace(
-            "local url = 'http://127.0.0.1:4343/'",
+            "local url = '<pyserv>'",
             "local url = '{}://{}/'".format('ws', h)
         )
         return web.Response(text=fcont)

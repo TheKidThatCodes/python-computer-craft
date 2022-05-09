@@ -1,8 +1,6 @@
 # Pythonized CC Tweaked (ComputerCraft) API
 
-**Warning**: CPython can't build safe sandboxes for arbitrary untrusted code
-[(read more)](https://nedbatchelder.com/blog/201206/eval_really_is_dangerous.html).
-Never use code in this repo if you don't trust your players!
+This fork uses restrictedpython to keep people from hacking you
 
 
 1. Before you start Minecraft, enable localhost in mod server config
