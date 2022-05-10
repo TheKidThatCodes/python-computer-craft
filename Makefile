@@ -1,5 +1,9 @@
 all_upl: wheel sdist upload
 all: wheel sdist
+
+runfromsource: deps
+	python3 -m cc-secure.server
+
 deps:
 	pip install -r ./requirements.txt
 

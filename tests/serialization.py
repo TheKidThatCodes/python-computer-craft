@@ -1,6 +1,6 @@
 from math import inf, nan, isnan
 
-from computercraft.ser import serialize, deserialize
+from cc-secure.ser import serialize, deserialize
 
 
 roundtrip_vals = [

@@ -1,4 +1,4 @@
-from computercraft.subapis.peripheral import CCDrive
+from cc-secure.subapis.peripheral import CCDrive
 from cc import LuaException, import_file, peripheral
 
 _lib = import_file('_lib.py', __file__)

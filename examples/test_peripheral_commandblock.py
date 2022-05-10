@@ -1,4 +1,4 @@
-from computercraft.subapis.peripheral import CCCommandBlock
+from cc-secure.subapis.peripheral import CCCommandBlock
 from cc import LuaException, import_file, peripheral
 
 _lib = import_file('_lib.py', __file__)

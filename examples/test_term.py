@@ -1,5 +1,5 @@
 from cc import import_file, colors, os, term
-from computercraft.subapis.mixins import TermMixin
+from cc-secure.subapis.mixins import TermMixin
 
 _lib = import_file('_lib.py', __file__)
 

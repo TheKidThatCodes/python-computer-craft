@@ -1,2 +1,2 @@
 language = "python3"
-run = "python -m computercraft.server"
+run = "python -m cc-secure.server"

@@ -9,16 +9,16 @@ RUN apk add --update \
 WORKDIR /wheels
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 RUN pip install wheel
-RUN pip download computercraft
-RUN pip wheel -w . computercraft
+RUN pip download cc-secure
+RUN pip wheel -w . cc-secure
 RUN ls -l
 
 FROM python:3.10-alpine
 
 WORKDIR /wheels
 COPY --from=0 /wheels/*.whl ./wheels/
-RUN pip install --no-index -f ./wheels computercraft
+RUN pip install --no-index -f ./wheels cc-secure
 WORKDIR /home
 ENV PYTHONDONTWRITEBYTECODE=1
 EXPOSE 8080/tcp
-ENTRYPOINT [ "python", "-m", "computercraft.server" ]
+ENTRYPOINT [ "python", "-m", "cc-secure.server" ]

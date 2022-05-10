@@ -10,7 +10,7 @@ longdesc = (Path(__file__).parent / 'README.md').read_text()
 
 
 setup(
-    name='computercraft-secure',
+    name='cc-secure-secure',
     version='0.1.0',
     description='Pythonization of ComputerCraft Minecraft mod. Write Python instead Lua! Fork by TheKidThatCodes',
     long_description=longdesc,
@@ -31,10 +31,10 @@ setup(
         'Topic :: Games/Entertainment',
     ],
     keywords='computercraft minecraft',
-    packages=['computercraft', 'computercraft.subapis','computercraft.scacop'],
-    package_data={'computercraft': ['back.lua']},
+    packages=['cc-secure', 'cc-secure.subapis','cc-secure.scacop'],
+    package_data={'cc-secure': ['back.lua']},
     install_requires=['aiohttp', 'greenlet'],
     entry_points={
-        'console_scripts': ['computercraft = computercraft.server:main'],
+        'console_scripts': ['cc-secure = cc-secure.server:main'],
     },
 )

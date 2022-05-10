@@ -29,8 +29,8 @@ This fork uses restrictedpython to keep people from hacking you
     Install & run manually:
 
     ```sh
-    pip install computercraft
-    python -m computercraft.server
+    pip install cc-secure
+    python -m cc-secure.server
     ```
 
 3. Start Minecraft, open up any computer and type:
