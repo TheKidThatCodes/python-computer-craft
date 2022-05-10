@@ -5,4 +5,8 @@ __pypackages__/
 /*.egg-info/
 /dist/
 /todo.txt
-.replit
+/bin/
+/lib/
+/include/
+/pyvenv.cfg
+.DS_Store

@@ -39,6 +39,22 @@ This fork uses restrictedpython to keep people from hacking you
     wget http://127.0.0.1:8080/ py
     py
     ```
+    or, if you are running on a replit or an external server, you can change the adress that is being `wget` ed to the replit or external server's ip or adress
+    
+    ex.    
+
+    ```sh
+    wget http://a_repl.somebody.repl.co py
+    py
+    ```
+    
+    or
+
+    ```sh
+    wget http://420.696.969.9 py
+    py
+    ```
+    (that ip is not real, instad, replace the ip with the one your server is on)
 
     Now you have python REPL in computercraft!
     To quit REPL type `exit()` and press enter.

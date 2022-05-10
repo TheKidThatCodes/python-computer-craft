@@ -1,7 +1,7 @@
 # docker build --tag neumond/python-computer-craft:<version> .
 # docker run -it -p 8080:8080 neumond/python-computer-craft:<version>
 
-FROM python:3.8-alpine
+FROM python:3.10-alpine
 RUN apk add --update \
     gcc musl-dev \
     build-base
@@ -13,7 +13,7 @@ RUN pip download computercraft
 RUN pip wheel -w . computercraft
 RUN ls -l
 
-FROM python:3.8-alpine
+FROM python:3.10-alpine
 
 WORKDIR /wheels
 COPY --from=0 /wheels/*.whl ./wheels/

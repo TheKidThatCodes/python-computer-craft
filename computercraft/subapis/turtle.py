@@ -109,9 +109,9 @@ def getItemCount(slotNum: int = None) -> int:
 def getItemSpace(slotNum: int = None) -> int:
     return method('getItemSpace', slotNum).take_int()
 
-
-def getItemDetail(slotNum: int = None) -> Optional[dict]:
-    rp = method('getItemDetail', slotNum)
+# fixed https://github.com/neumond/python-computer-craft/issues/10
+def getItemDetail(slotNum: int = None,detailed:bool=False) -> Optional[dict]:
+    rp = method('getItemDetail', slotNum,detailed)
     if rp.peek() is None:
         return None
     return rp.take_dict()
