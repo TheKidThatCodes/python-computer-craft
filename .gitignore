@@ -10,3 +10,4 @@ __pypackages__/
 /include/
 /pyvenv.cfg
 .DS_Store
+pypicredentials.zsh

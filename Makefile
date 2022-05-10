@@ -13,7 +13,7 @@ sdist:
 
 upload:
 	pip install -U twine
-	TWINE_USERNAME=$TWINE_USERNAME TWINE_PASSWORD=$TWINE_PASSWORD twine upload dist/*
+	twine upload --verbose dist/*
 
 clean:
 	@echo Deleting dists and run files
@@ -24,5 +24,5 @@ clean:
 	rm -r -f */*.pyc
 	rm -r -f build/
 	rm -r -f */*.egg-info/
-	rm -r -f */*.egg-info/
+	rm -r -f *.egg-info/
 	rm -r -f dist/
