@@ -41,7 +41,7 @@ return src
         raise ImportError('File not found: {}'.format(path))
     cc = compile(source, mod.__name__, 'exec')
     
-    exec(cc, {"builtins":})
+    exec(cc, {"builtins":cc_builtins})
     return mod
 
 

@@ -1,5 +1,8 @@
 all_upl: wheel sdist upload
 all: wheel sdist
+deps:
+	pip install -r ./requirements.txt
+
 wheel:
 	pip install -U wheel
 	pip install -U setuptools
@@ -13,11 +16,13 @@ upload:
 	TWINE_USERNAME=$TWINE_USERNAME TWINE_PASSWORD=$TWINE_PASSWORD twine upload dist/*
 
 clean:
-	rm -r -f ./build/
-	rm -r -f ./*/__pycache__/
-	rm -r -f ./*/__pypackages__/
-	rm -r -f ./*/*.pyc
-	rm -r -f ./build/
-	rm -r -f ./*/*.egg-info/
-	rm -r -f ./*.egg-info/
-	rm -r -f ./dist/
+	@echo Deleting dists and run files
+	rm -r -f build/
+	rm -r -f */*/__pycache__/
+	rm -r -f */__pycache__/
+	rm -r -f */__pypackages__/
+	rm -r -f */*.pyc
+	rm -r -f build/
+	rm -r -f */*.egg-info/
+	rm -r -f */*.egg-info/
+	rm -r -f dist/

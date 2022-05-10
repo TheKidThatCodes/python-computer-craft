@@ -31,7 +31,7 @@ setup(
         'Topic :: Games/Entertainment',
     ],
     keywords='computercraft minecraft',
-    packages=['computercraft', 'computercraft.subapis'],
+    packages=['computercraft', 'computercraft.subapis','computercraft.scacop'],
     package_data={'computercraft': ['back.lua']},
     install_requires=['aiohttp', 'greenlet'],
     entry_points={
