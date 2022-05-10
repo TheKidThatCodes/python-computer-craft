@@ -10,7 +10,7 @@ deps:
 wheel:
 	pip install -U wheel
 	pip install -U setuptools
-	pip wheel --no-deps -w dist .
+	python3 setup.py --verbose bdist_wheel
 
 sdist:
 	python setup.py sdist
