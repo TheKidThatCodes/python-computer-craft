@@ -8,9 +8,6 @@ wheel:
 sdist:
 	python setup.py sdist
 
-test:
-	SBR=sus python3 shenvvt.py 
-
 upload:
 	pip install -U twine
 	TWINE_USERNAME=$TWINE_USERNAME TWINE_PASSWORD=$TWINE_PASSWORD twine upload dist/*
