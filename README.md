@@ -3,7 +3,9 @@
 This fork uses restrictedpython to keep people from hacking you
 
 
-1. Before you start Minecraft, enable localhost in mod server config
+1. IF YOU ARE HOSTING AS LOCALHOST (not a replit or external server)
+
+   Before you start Minecraft, enable localhost in mod server config
 
     In case of singleplayer it's located inside your saves folder.
     In case of multiplayer check your server folder.
@@ -16,7 +18,7 @@ This fork uses restrictedpython to keep people from hacking you
 		action = "allow"  # change here deny to allow
     ```
 
-2. Install & start python language server
+3. Install & start python language server
 
     Choose one of the following:
 
@@ -33,7 +35,7 @@ This fork uses restrictedpython to keep people from hacking you
     python -m cc-secure.server
     ```
 
-3. Start Minecraft, open up any computer and type:
+4. Start Minecraft, open up any computer and type:
 
     ```sh
     wget http://127.0.0.1:8080/ py
