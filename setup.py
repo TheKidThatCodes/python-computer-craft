@@ -12,7 +12,7 @@ longdesc = (Path(__file__).parent / 'README.md').read_text()
 
 setup(
     name='cc-secure',
-    version='0.1.0',
+    version='0.1.1',
     description='Pythonization of ComputerCraft Minecraft mod. Write Python instead Lua! Fork by TheKidThatCodes',
     long_description=longdesc,
     long_description_content_type='text/markdown',
