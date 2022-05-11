@@ -1,5 +1,5 @@
-all_upl: bdist_wheel sdist upload
-all: bdist_wheel sdist
+all_upl: bdist_wheel sdist build_py upload
+all: bdist_wheel sdist build_py
 
 runfromsource: deps
 	python3 -m cc-secure.server
