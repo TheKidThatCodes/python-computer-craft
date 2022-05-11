@@ -39,9 +39,6 @@ setup(
         'greenlet',
         'RestrictedPython',
         ],
-    entry_points={
-        'console_scripts': ['cc-secure = cc-secure.server:main'],
-    },
     package_dir={"": "src"},
     python_requires=">=3.7",
 )
