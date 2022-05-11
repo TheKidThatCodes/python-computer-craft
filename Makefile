@@ -1,5 +1,5 @@
-all_upl: wheel sdist upload
-all: wheel sdist
+all_upl: bdist_wheel sdist build_py upload
+all: bdist_wheel sdist build_py
 
 runfromsource: deps
 	python3 -m cc-secure.server
@@ -7,13 +7,16 @@ runfromsource: deps
 deps:
 	pip install -r ./requirements.txt
 
-wheel:
+bdist_wheel:
 	pip install -U wheel
 	pip install -U setuptools
 	python3 setup.py --verbose bdist_wheel
 
 sdist:
 	python setup.py sdist
+
+build_py:
+	python3 setup.py build_py
 
 upload:
 	pip install -U twine
