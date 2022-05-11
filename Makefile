@@ -1,5 +1,5 @@
-all_upl: bdist_wheel sdist build_py upload
-all: bdist_wheel sdist build_py
+all_upl: bdist_wheel sdist build_py rotate upload
+all: bdist_wheel sdist build_py rotate
 
 runfromsource: deps
 	python3 -m cc-secure.server
@@ -21,6 +21,9 @@ build_py:
 upload:
 	pip install -U twine
 	twine upload --verbose dist/*
+
+rotate:
+	python3 setup.py rotate
 
 clean:
 	@echo Deleting dists and run files
