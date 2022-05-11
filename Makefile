@@ -23,7 +23,7 @@ upload:
 	twine upload --verbose dist/*
 
 rotate:
-	python3 setup.py rotate -m .tar.gz -m .whl
+	python3 setup.py rotate -m .tar.gz -m .whl -k 1
 
 clean:
 	@echo Deleting dists and run files
