@@ -2,7 +2,7 @@ all_upl: bdist_wheel sdist build_py upload
 all: bdist_wheel sdist build_py
 
 runfromsource: deps
-	python3 -m cc-secure.server
+	cd src && clear && python3 -m cc-secure.server
 
 deps:
 	pip install -r ./requirements.txt
